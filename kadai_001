@@ -1,0 +1,11 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = 'https://news.yahoo.co.jp/articles/e3caba90e04813d6c1a796dcb0562ea0bd5fd596'
+response = requests.get(url)
+
+soup = BeautifulSoup(response.text, 'html.parser')
+
+element = soup.select_one('#uamods > .article_body > div > p')
+text = element.text
+print(text)
